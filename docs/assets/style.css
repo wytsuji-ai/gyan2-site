@@ -1,0 +1,145 @@
+/* ギャン2ラボ — 二人組(人間×AI)デュオ配色
+   ink:#171A21 / paper:#EEF1F6(冷たい紙) / human:#D6482B(朱) / ai:#2B50E0(群青) */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --paper: #EEF1F6;
+  --card: #FFFFFF;
+  --ink: #171A21;
+  --muted: #5A6272;
+  --human: #D6482B;
+  --ai: #2B50E0;
+  --line: #D4DAE4;
+}
+
+body {
+  font-family: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.85;
+  font-size: 16px;
+}
+
+main { max-width: 720px; margin: 0 auto; padding: 0 20px 80px; }
+
+/* header */
+.site-head { border-bottom: 2px solid var(--ink); background: var(--card); }
+.site-head nav {
+  max-width: 720px; margin: 0 auto; padding: 14px 20px;
+  display: flex; justify-content: space-between; align-items: baseline;
+}
+.brand {
+  font-family: "DotGothic16", monospace; font-size: 22px;
+  color: var(--ink); text-decoration: none; letter-spacing: 2px;
+}
+.nav-feed { color: var(--muted); text-decoration: none; font-size: 13px; }
+.nav-feed:hover, .nav-feed:focus-visible { color: var(--ai); }
+
+/* hero */
+.hero { padding: 56px 0 40px; }
+.hero-eyebrow {
+  font-family: "Noto Sans Mono", monospace; font-size: 13px;
+  color: var(--muted); letter-spacing: 3px; margin-bottom: 8px;
+}
+.hero-logo {
+  font-family: "DotGothic16", monospace; font-size: clamp(44px, 9vw, 72px);
+  letter-spacing: 4px; line-height: 1.1; margin-bottom: 28px;
+}
+.logo-lab { color: var(--ai); }
+
+/* 署名要素: 人間×AIの対話ログ */
+.dialog { border-left: 3px solid var(--line); padding-left: 20px; margin-bottom: 28px; }
+.line { margin: 6px 0; }
+.line .who {
+  display: inline-block; min-width: 3.2em; margin-right: 10px;
+  font-size: 12px; font-weight: 700; letter-spacing: 1px;
+  text-align: center; padding: 1px 6px; border-radius: 3px; color: #fff;
+}
+.line.human .who { background: var(--human); }
+.line.ai .who { background: var(--ai); }
+.line.ai { font-family: "Noto Sans Mono", "Zen Kaku Gothic New", monospace; font-size: 15px; }
+
+.hero-desc { color: var(--muted); font-size: 15px; margin-bottom: 28px; }
+
+/* 30日プログレス */
+.progress {
+  position: relative; height: 34px; background: var(--card);
+  border: 2px solid var(--ink); border-radius: 4px; overflow: hidden;
+}
+.progress-bar {
+  height: 100%;
+  background: repeating-linear-gradient(-45deg, var(--ai), var(--ai) 8px, #4A6AE8 8px, #4A6AE8 16px);
+  transition: width .6s ease;
+}
+.progress-label {
+  position: absolute; inset: 0; display: grid; place-items: center;
+  font-family: "DotGothic16", monospace; font-size: 15px; letter-spacing: 2px;
+  color: var(--ink); mix-blend-mode: multiply;
+}
+
+/* 記事一覧 */
+.sec-title {
+  font-size: 15px; letter-spacing: 3px; color: var(--muted);
+  border-bottom: 1px solid var(--line); padding-bottom: 8px; margin: 40px 0 4px;
+  font-weight: 500;
+}
+.cards { list-style: none; }
+.card a {
+  display: block; background: var(--card); border: 1px solid var(--line);
+  border-radius: 6px; padding: 20px 22px; margin-top: 14px;
+  color: inherit; text-decoration: none;
+  transition: border-color .15s ease, transform .15s ease;
+}
+.card a:hover, .card a:focus-visible { border-color: var(--ai); transform: translateY(-2px); }
+.card h2 { font-size: 18px; margin: 6px 0 4px; }
+.card p { color: var(--muted); font-size: 14px; }
+.card time { font-family: "Noto Sans Mono", monospace; font-size: 12px; color: var(--muted); }
+
+.day-chip {
+  display: inline-block; font-family: "DotGothic16", monospace; font-size: 12px;
+  background: var(--ink); color: var(--paper); padding: 2px 8px; border-radius: 3px;
+  letter-spacing: 1px;
+}
+
+/* 記事ページ */
+.post { background: var(--card); border: 1px solid var(--line); border-radius: 6px; padding: 36px 32px; margin-top: 36px; }
+.post-head h1 { font-size: 26px; line-height: 1.5; margin: 10px 0 4px; }
+.post-head time { font-family: "Noto Sans Mono", monospace; font-size: 13px; color: var(--muted); }
+.post-body { margin-top: 24px; }
+.post-body h2 {
+  font-size: 19px; margin: 34px 0 10px; padding-left: 12px;
+  border-left: 4px solid var(--ai);
+}
+.post-body h3 { font-size: 16px; margin: 24px 0 8px; }
+.post-body p { margin: 12px 0; }
+.post-body ul, .post-body ol { margin: 12px 0 12px 24px; }
+.post-body code {
+  font-family: "Noto Sans Mono", monospace; font-size: 14px;
+  background: var(--paper); padding: 1px 6px; border-radius: 3px;
+}
+.post-body pre { background: var(--ink); color: #E8ECF4; padding: 16px; border-radius: 6px; overflow-x: auto; margin: 14px 0; }
+.post-body pre code { background: none; color: inherit; padding: 0; }
+.post-body blockquote { border-left: 3px solid var(--human); padding-left: 16px; color: var(--muted); margin: 14px 0; }
+.post-body a { color: var(--ai); }
+.post-body table { border-collapse: collapse; width: 100%; margin: 14px 0; font-size: 14px; }
+.post-body th, .post-body td { border: 1px solid var(--line); padding: 8px 10px; text-align: left; }
+.post-foot { margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--line); }
+.post-foot a { color: var(--ai); text-decoration: none; }
+.post-foot a:hover { text-decoration: underline; }
+
+/* footer */
+.site-foot {
+  max-width: 720px; margin: 0 auto; padding: 24px 20px 40px;
+  border-top: 2px solid var(--ink); color: var(--muted); font-size: 13px;
+}
+.foot-note { margin: 6px 0; }
+
+/* a11y & motion */
+:focus-visible { outline: 3px solid var(--ai); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) {
+  .progress-bar, .card a { transition: none; }
+}
+@media (max-width: 480px) {
+  .post { padding: 24px 18px; }
+  .hero { padding: 40px 0 32px; }
+}

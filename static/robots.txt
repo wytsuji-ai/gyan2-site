@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://gyan2.net/sitemap.xml
