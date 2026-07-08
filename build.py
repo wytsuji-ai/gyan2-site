@@ -9,6 +9,7 @@ import markdown
 ROOT = Path(__file__).parent
 DOCS = ROOT / "docs"
 POSTS = ROOT / "content" / "posts"
+PAGES = ROOT / "content" / "pages"
 SITE_URL = "https://gyan2.net"
 SITE_NAME = "ギャン2ラボ"
 SITE_DESC = "人間ひとり×AIひとつの二人組で「稼ぐ」を実験するラボ。Claude Codeに仕事を任せる30日チャレンジ実践記。"
@@ -75,6 +76,19 @@ def post_html(p):
     return page(f'{p["title"]} | {SITE_NAME}', p["description"] or SITE_DESC, art, p["url"])
 
 
+def page_html(p):
+    art = f"""
+<article class="post">
+  <header class="post-head">
+    <h1>{html.escape(p["title"])}</h1>
+    <time datetime="{p["date"]}">{p["date"]}</time>
+  </header>
+  <div class="post-body">{p["body"]}</div>
+  <footer class="post-foot"><a href="/">← ラボのトップへ</a></footer>
+</article>"""
+    return page(f'{p["title"]} | {SITE_NAME}', p["description"] or SITE_DESC, art, f"/{p['slug']}.html")
+
+
 def index_html(posts):
     cards = "\n".join(
         f"""<li class="card">
@@ -137,6 +151,9 @@ def main():
     posts = sorted((parse_post(p) for p in POSTS.glob("*.md")), key=lambda p: p["date"], reverse=True)
     for p in posts:
         (DOCS / "posts" / f"{p['slug']}.html").write_text(post_html(p), encoding="utf-8")
+    pages = [parse_post(p) for p in PAGES.glob("*.md")] if PAGES.exists() else []
+    for p in pages:
+        (DOCS / f"{p['slug']}.html").write_text(page_html(p), encoding="utf-8")
     (DOCS / "index.html").write_text(index_html(posts), encoding="utf-8")
     rss, sitemap = feeds(posts)
     (DOCS / "feed.xml").write_text(rss, encoding="utf-8")
