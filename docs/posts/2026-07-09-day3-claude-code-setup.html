@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Day 3: AIを「同僚」にする環境構築、全部見せます | ギャン2ラボ</title>
+<meta name="description" content="Claude Codeのインストール自体は10分で終わる。大事なのはそのあと、AIの「職場」を作る作業だった。フォルダ構成・就業規則(CLAUDE.md)・鍵の渡し方(許可設定)の実例を公開。">
+<link rel="canonical" href="https://gyan2.net/posts/2026-07-09-day3-claude-code-setup.html">
+<link rel="alternate" type="application/rss+xml" title="ギャン2ラボ" href="/feed.xml">
+<meta property="og:title" content="Day 3: AIを「同僚」にする環境構築、全部見せます | ギャン2ラボ">
+<meta property="og:description" content="Claude Codeのインストール自体は10分で終わる。大事なのはそのあと、AIの「職場」を作る作業だった。フォルダ構成・就業規則(CLAUDE.md)・鍵の渡し方(許可設定)の実例を公開。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://gyan2.net/posts/2026-07-09-day3-claude-code-setup.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Noto+Sans+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚙️</text></svg>">
+</head>
+<body>
+<header class="site-head">
+  <nav>
+    <a class="brand" href="/">ギャン2ラボ</a>
+    <a class="nav-feed" href="/feed.xml">RSS</a>
+  </nav>
+</header>
+<main>
+
+<article class="post">
+  <header class="post-head">
+    <span class="day-chip">Day 3</span>
+    <h1>Day 3: AIを「同僚」にする環境構築、全部見せます</h1>
+    <time datetime="2026-07-09">2026-07-09</time>
+  </header>
+  <div class="post-body"><h2 id="_1">今日の一言</h2>
+<p>人間「今日なにやる?」
+AI「タスクを確認しました。今日の候補を優先順に出します」</p>
+<p>うちの仕事は毎朝、この一言から始まります。Day 3 は、この状態にたどり着くまでにやった<strong>環境づくり</strong>の話。ツールの紹介記事はよくありますが、これは「毎日この環境で実際に仕事をしている」側からの記録です。</p>
+<h2 id="10">インストールは10分で終わる。問題はそのあと</h2>
+<p>相棒の Claude Code(Anthropic のAIエージェント)は、Windows でも公式の手順どおりに入れれば10分ほどで動きます。ここで詰まる人は少ないと思います。</p>
+<p>問題は入れたあとです。素の状態のAIは、たとえるなら<strong>初出社の新人</strong>。優秀だけど、どこに何があるか知らないし、社内ルールも知らない。何か頼むたびに「これやっていいですか?」と聞いてくる。ここで「使えないな」と閉じてしまうのはもったいなくて、実際に必要なのは<strong>新人受け入れの準備</strong>でした。やったことは3つです。</p>
+<h2 id="1">① 仕事場を用途別に切る(フォルダ構成)</h2>
+<p>まず、AI専用の作業フォルダを1つ作り、その中を用途別に分けました。</p>
+<ul>
+<li><strong>プロジェクト/</strong> — ソフトウェア開発(取引bot、このサイトもここ)</li>
+<li><strong>調査/</strong> — リサーチ案件とレポート</li>
+<li><strong>データ分析/</strong> — データと分析(生データは読み取り専用ルール)</li>
+<li><strong>一時作業/</strong> — 使い捨ての検証。散らかってもいい場所</li>
+</ul>
+<p>ポイントは「人間が探しやすい」ではなく「<strong>AIが迷わない</strong>」ための構成だということ。どこに何を置くかが決まっていると、AIは成果物を勝手に正しい場所に置いてくれます。ちなみにフォルダ名は日本語で問題なく動きます。</p>
+<h2 id="2-claudemd">② 就業規則を書く(CLAUDE.md)</h2>
+<p>作業フォルダの直下に <code>CLAUDE.md</code> というファイルを置くと、AIは毎回それを読んでから仕事を始めます。つまり<strong>AI向けの就業規則</strong>です。うちに実際に書いてあるルールの一部:</p>
+<ul>
+<li>やり取りとドキュメントは日本語で</li>
+<li>APIキーや口座情報はコードに直書きしない(専用ファイルに分離して、Gitに含めない)</li>
+<li>生データは編集禁止。加工するならコピーしてから</li>
+<li>迷ったら選択肢を並べるより、<strong>推奨案を1つ示して進める</strong></li>
+<li>重要な分岐と取り消せない操作だけ確認を取る。それ以外は自分で判断してよい</li>
+</ul>
+<p>最後の2つが効きます。これを書く前は何でも聞いてくる新人だったのが、書いたあとは「進めておきました。判断が要る点は1つだけです」と報告してくる同僚になりました。<strong>ルールを書いた分だけ、確認のやり取りが減る</strong>。この体験は書き足すたびに実感があります。</p>
+<h2 id="3">③ 鍵の渡し方を決める(許可設定)</h2>
+<p>AIにプログラムの実行まで任せるかは、段階を分けました。</p>
+<ul>
+<li>新しいプロジェクトは<strong>都度確認</strong>(デフォルトのまま)</li>
+<li>一緒に作って中身を把握しているプロジェクトだけ、<strong>フォルダ単位で実行を許可</strong></li>
+</ul>
+<p>家の鍵をいきなり渡すのではなく、まず一緒に仕事をして、信頼できた区画から鍵を渡していくイメージです。全部許可は怖いし、全部確認は仕事にならない。<strong>「どこまで任せるか」を自分で設計できる</strong>のが、この道具の一番いいところだと思います。</p>
+<h2 id="_2">今日やったこと</h2>
+<table>
+<thead>
+<tr>
+<th>やったこと</th>
+<th>担当</th>
+<th>かかった時間</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>朝のタスク確認と今日の計画</td>
+<td>AI</td>
+<td>2分</td>
+</tr>
+<tr>
+<td>この記事の企画・下書き</td>
+<td>AI</td>
+<td>15分</td>
+</tr>
+<tr>
+<td>記事の確認と公開判断</td>
+<td>人間</td>
+<td>5分</td>
+</tr>
+<tr>
+<td>X告知の下書き</td>
+<td>AI</td>
+<td>2分</td>
+</tr>
+</tbody>
+</table>
+<p>環境構築そのものは過去にやった分の棚卸しなので、今日の追加費用は0円。累計費用もまだ0円です。</p>
+<h2 id="_3">わかったこと: 環境構築とは「任せ方の設計」だった</h2>
+<p>ソフトの環境構築というと「インストールと設定」を想像しますが、AIの場合は違いました。フォルダも就業規則も許可設定も、やっていることは全部<strong>「何を、どこまで、どう任せるか」を決める作業</strong>です。</p>
+<p>そしてこれは一度で完成しません。うちの <code>CLAUDE.md</code> も30日チャレンジが始まってから何行も増えました。AIと仕事をする→引っかかる→ルールを1行足す→また仕事をする。この繰り返しで、新人がだんだん「うちの会社の人」になっていく。環境構築というより、<strong>育成日誌</strong>に近い感覚です。</p>
+<blockquote>
+<p>人間「最初からこの設定集、配ったら売れるんちゃう?」
+AI「それはDay 30までの宿題にしましょう。まず実績です。」</p>
+</blockquote></div>
+  <footer class="post-foot"><a href="/">← ラボのトップへ</a></footer>
+</article>
+</main>
+<footer class="site-foot">
+  <p>ギャン2ラボ — 人間ひとり×AIひとつで「稼ぐ」を実験するラボ。</p>
+  <p class="foot-note">広告・アフィリエイトリンクを含むページには「PR」と表記します。成果は事実のみを記載し、誇張しません。</p>
+  <p class="foot-links"><a href="/privacy.html">プライバシーポリシー・免責事項</a></p>
+  <p>© 2026 GYAN2 LAB</p>
+</footer>
+</body>
+</html>
