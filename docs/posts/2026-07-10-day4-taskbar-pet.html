@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Day 4: AIと作っていた「猫」、お披露目します | ギャン2ラボ</title>
+<meta name="description" content="タスクバーの上をドット絵の猫が歩く常駐アプリを、AIと作っています。設計もコードもテストも、ドット絵さえもAI。最初の動く版まで1日、今は動物10種。「AIと作ったものを売る」3本目の収益ルート、初公開。">
+<link rel="canonical" href="https://gyan2.net/posts/2026-07-10-day4-taskbar-pet.html">
+<link rel="alternate" type="application/rss+xml" title="ギャン2ラボ" href="/feed.xml">
+<meta property="og:title" content="Day 4: AIと作っていた「猫」、お披露目します | ギャン2ラボ">
+<meta property="og:description" content="タスクバーの上をドット絵の猫が歩く常駐アプリを、AIと作っています。設計もコードもテストも、ドット絵さえもAI。最初の動く版まで1日、今は動物10種。「AIと作ったものを売る」3本目の収益ルート、初公開。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://gyan2.net/posts/2026-07-10-day4-taskbar-pet.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Noto+Sans+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚙️</text></svg>">
+</head>
+<body>
+<header class="site-head">
+  <nav>
+    <a class="brand" href="/">ギャン2ラボ</a>
+    <a class="nav-feed" href="/feed.xml">RSS</a>
+  </nav>
+</header>
+<main>
+
+<article class="post">
+  <header class="post-head">
+    <span class="day-chip">Day 4</span>
+    <h1>Day 4: AIと作っていた「猫」、お披露目します</h1>
+    <time datetime="2026-07-10">2026-07-10</time>
+  </header>
+  <div class="post-body"><h2 id="_1">今日の一言</h2>
+<p>人間「猫、そろそろ見せてもいい?」
+AI「テストは344件すべて通っています。どうぞ」</p>
+<p>Day 2 の記事の最後に書いた「<strong>タスクバーの上をドット絵の猫が歩き回るデスクトップアプリ</strong>」。今日はその予告の回収です。</p>
+<h2 id="_2">タスクバーの上を、猫が歩いています</h2>
+<p>作っているのは、Windows のタスクバーの上辺をドット絵の三毛猫がてくてく歩く常駐アプリです。歩く、座る、寝る。マウスカーソルを目で追う。トレイメニューから「ごはんをあげる」と、餌皿までとことこ食べに来る。猫の上でカーソルをこすると、じゃれてくる。</p>
+<p>飼っていると子どもから大人に育って、かまった分だけなつき度が上がり、なつくほどできることが増えます。またたびをあげると60秒だけカーソルを全力で追い回します。仕事中の画面の端で、ずっと何かが生きている。そういうアプリです。</p>
+<h2 id="1">人間はドット絵を1ピクセルも描いていない</h2>
+<p>このアプリ、発端は人間の「タスクバーの上を猫が歩いてたらかわいくない?」という一言だけです。そこからの分担がこうなりました。</p>
+<ul>
+<li><strong>設計・コード・テスト・デバッグ</strong> — AI。最初の動く版まで<strong>1日</strong>でした</li>
+<li><strong>ドット絵</strong> — これもAI。画像生成AIに元絵を描かせて、プログラムで透過・パレット整理などの後処理をかける生産ラインをAIが自作しました。人間はドット絵を1ピクセルも描いていません</li>
+<li><strong>人間の仕事</strong> — 「もうちょっとゆっくり歩かせて」「この顔はかわいくない」という<strong>かわいさの最終判定</strong>だけ</li>
+</ul>
+<p>いま開発は6周目。三毛猫だけだったのが、しば犬・くろ猫・うさぎ・ぶたなど<strong>動物10種</strong>になり、自動テストは344件になりました。技術的な検証(生成した絵の色や透過が壊れていないか等)はAIが自動化して、人間の目視確認は最小限。ここでも役割は「AIが作る、人間が決める」のままです。</p>
+<h2 id="3">なんで作るの? — 収益ルート3本目の実験</h2>
+<p>このチャレンジの収益ルートは、いまのところ広告(アフィリエイト)と note の有料記事の2本です。そこに「<strong>AIと作ったものを売る</strong>」という3本目を足します。売り場の本命は Steam(PCゲームの配信プラットフォーム)です。</p>
+<p>市場調査もAIにやらせました。返ってきた答えは正直でした。</p>
+<ul>
+<li>デスクトップで動物を飼う系のアプリには<strong>先行製品がある</strong>。無料の人気作もある</li>
+<li>だから「歩くだけ」では売れない。<strong>一芸と、集めたくなる要素が要る</strong></li>
+</ul>
+<p>夢のある話だけ書いてもしょうがないので、費用と時間も正直に書きます。Steam で売るには登録料 <strong>$100</strong>(このチャレンジ初めての出費になる予定)と、審査からリリースまで<strong>2ヶ月前後</strong>の期間が必要です。つまり<strong>この30日チャレンジの期間内には、猫は1円も稼ぎません</strong>。それでも登録カウントは早く回し始めたほうがいいので、仕込みだけ今週やります。30日の外に向けた種まきです。</p>
+<h2 id="_3">今日やったこと</h2>
+<table>
+<thead>
+<tr>
+<th>やったこと</th>
+<th>担当</th>
+<th>かかった時間</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>朝のタスク確認と今日の計画</td>
+<td>AI</td>
+<td>2分</td>
+</tr>
+<tr>
+<td>猫アプリの新動物2種(ぶた・うさぎ)の追加と不具合修正</td>
+<td>AI</td>
+<td>人間の待ち時間ほぼゼロ</td>
+</tr>
+<tr>
+<td>かわいさの最終判定</td>
+<td>人間</td>
+<td>5分</td>
+</tr>
+<tr>
+<td>この記事の企画・下書き</td>
+<td>AI</td>
+<td>15分</td>
+</tr>
+<tr>
+<td>記事の確認と公開判断</td>
+<td>人間</td>
+<td>5分</td>
+</tr>
+</tbody>
+</table>
+<p>累計費用はまだ0円。$100の出費が発生したら、ちゃんとこのログに書きます。</p>
+<h2 id="ai">わかったこと: AIとの物作りは「発注」ではなく「壁打ち」</h2>
+<p>外注でアプリを作ると、仕様書を書いて、見積もりを取って、納品を待つことになります。AIとの物作りは全然違いました。「かわいくない?」から始まって、動くものが出てくる。触ってみて「ここが惜しい」と言うと、直ったものが出てくる。<strong>仕様書の代わりに、会話がある</strong>。</p>
+<p>そして意外だったのは、コードよりも<strong>絵までAIで完結した</strong>ことです。ドット絵が描けないから諦める、外注するからお金がかかる——個人開発の定番の壁が、このプロジェクトには最初からありませんでした。作れるかどうかはもう問題じゃない。<strong>売れるかどうか</strong>。実験はそこまで来ています。</p>
+<blockquote>
+<p>人間「うちの猫、Steamデビューできるかな」
+AI「まず登録料$100の入金をお願いします。」</p>
+</blockquote></div>
+  <footer class="post-foot"><a href="/">← ラボのトップへ</a></footer>
+</article>
+</main>
+<footer class="site-foot">
+  <p>ギャン2ラボ — 人間ひとり×AIひとつで「稼ぐ」を実験するラボ。</p>
+  <p class="foot-note">広告・アフィリエイトリンクを含むページには「PR」と表記します。成果は事実のみを記載し、誇張しません。</p>
+  <p class="foot-links"><a href="/privacy.html">プライバシーポリシー・免責事項</a></p>
+  <p>© 2026 GYAN2 LAB</p>
+</footer>
+</body>
+</html>

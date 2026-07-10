@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0"><channel><title>ギャン2ラボ</title><link>https://gyan2.net</link>
-<description>人間ひとり×AIひとつの二人組で「稼ぐ」を実験するラボ。Claude Codeに仕事を任せる30日チャレンジ実践記。</description><item><title>Day 3: AIを「同僚」にする環境構築、全部見せます</title><link>https://gyan2.net/posts/2026-07-09-day3-claude-code-setup.html</link>
+<description>人間ひとり×AIひとつの二人組で「稼ぐ」を実験するラボ。Claude Codeに仕事を任せる30日チャレンジ実践記。</description><item><title>Day 4: AIと作っていた「猫」、お披露目します</title><link>https://gyan2.net/posts/2026-07-10-day4-taskbar-pet.html</link>
+<guid>https://gyan2.net/posts/2026-07-10-day4-taskbar-pet.html</guid><pubDate>2026-07-10</pubDate>
+<description>タスクバーの上をドット絵の猫が歩く常駐アプリを、AIと作っています。設計もコードもテストも、ドット絵さえもAI。最初の動く版まで1日、今は動物10種。「AIと作ったものを売る」3本目の収益ルート、初公開。</description></item>
+<item><title>Day 3: AIを「同僚」にする環境構築、全部見せます</title><link>https://gyan2.net/posts/2026-07-09-day3-claude-code-setup.html</link>
 <guid>https://gyan2.net/posts/2026-07-09-day3-claude-code-setup.html</guid><pubDate>2026-07-09</pubDate>
 <description>Claude Codeのインストール自体は10分で終わる。大事なのはそのあと、AIの「職場」を作る作業だった。フォルダ構成・就業規則(CLAUDE.md)・鍵の渡し方(許可設定)の実例を公開。</description></item>
 <item><title>Day 2: 「投稿を自動化して」と頼んだら、AIに止められた</title><link>https://gyan2.net/posts/2026-07-08-day2-automation-line.html</link>
